@@ -34,6 +34,6 @@ jobs:
       env:
         AWS_ACCESS_KEY_ID: AKIAZI2LIPXU3VW7TJGU
         AWS_SECRET_ACCESS_KEY: Hc4CgKOPniqv3y0JrazPG3Eu/7mWw5M8SoeKoRND
-        AWS_REGION: 'us-west-2'  # or your region
+        AWS_REGION: 'us-west-2' 
       run: ./deploy.sh
       working-directory: .
