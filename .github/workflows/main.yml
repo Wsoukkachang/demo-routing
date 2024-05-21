@@ -1,0 +1,39 @@
+name: Deploy to S3
+
+on:
+  push:
+    branches:
+      - main  # or the branch you want to deploy from
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '18'  # or the version you are using
+
+    - name: Install dependencies
+      run: npm install
+      working-directory: .
+
+    - name: List directory contents for debugging
+      run: ls -la
+      working-directory: .
+
+    - name: Make deploy script executable
+      run: chmod +x deploy.sh
+      working-directory: .
+
+    - name: Build and Deploy
+      env:
+        AWS_ACCESS_KEY_ID: AKIAZI2LIPXU3VW7TJGU
+        AWS_SECRET_ACCESS_KEY: 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
+        AWS_REGION: 'us-west-2' 
+      run: ./deploy.sh
+      working-directory: .
